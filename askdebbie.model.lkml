@@ -23,7 +23,7 @@ include: "*.view"                       # include all views in this project
 
   join: product_curr_dim {
     relationship: many_to_one
-    sql_on: ${product_dim.product_curr_key}dim.product_key} = ${product_curr_dim.product_curr_key} ;;
+    sql_on: ${product_dim.product_curr_key} = ${product_curr_dim.product_curr_key} ;;
   }
 
   join: product_class_dim {
