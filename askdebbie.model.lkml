@@ -36,4 +36,15 @@ include: "*.view"                       # include all views in this project
     relationship: many_to_one
     sql_on: ${product_line_dim.product_line_key} = ${product_curr_dim.product_line_key} ;;
   }
+
+  join: slx_primary_account_dim {
+    from: slx_account_dim
+    relationship: many_to_one
+    sql_on: ${slx_opportunity_dim.primary_account_key} = ${slx_primary_account_dim.account_key} ;;
+  }
+  join: slx_billing_entity_dim {
+    from: slx_account_dim
+    relationship: many_to_one
+    sql_on: ${slx_opportunity_dim.billing_entity_key} = ${slx_billing_entity_dim.account_key} ;;
+  }
  }
