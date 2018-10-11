@@ -36,8 +36,8 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."BUSINESS_WON_DATE" ;;
   }
 
-  dimension: contract_cost_dollars {
-    type: number
+  measure: contract_cost_dollars {
+    type: sum
     sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
   }
 
