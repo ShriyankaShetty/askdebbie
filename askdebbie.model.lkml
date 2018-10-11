@@ -18,7 +18,8 @@ include: "*.view"                       # include all views in this project
 
    join: product_dim {
      relationship: many_to_one
-     sql_on: ${product_dim.product_key} = ${slx_opportunity_lineitem_fact.product_key} ;;
+       sql_on: ${product_dim.product_key} = ${slx_opportunity_lineitem_fact.product_key} ;;
+
    }
 
   join: product_curr_dim {
@@ -28,7 +29,7 @@ include: "*.view"                       # include all views in this project
 
   join: product_class_dim {
     relationship: many_to_one
-    sql_on: ${product_class_dim.product_class_key} = ${product_dim.product_class_key} ;;
+    sql_on: ${product_class_dim.product_class_key} = ${product_curr_dim.product_class_key} ;;
   }
 
   join: product_line_dim {
