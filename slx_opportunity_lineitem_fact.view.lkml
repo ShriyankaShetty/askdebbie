@@ -51,11 +51,6 @@ view: slx_opportunity_lineitem_fact {
     sql: ${TABLE}."CONTRACT_BUILDING_CNT" ;;
   }
 
-  dimension: contract_cost_dollars {
-    type: number
-    sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
-  }
-
   dimension: contract_years_cnt {
     type: number
     sql: ${TABLE}."CONTRACT_YEARS_CNT" ;;
@@ -76,10 +71,7 @@ view: slx_opportunity_lineitem_fact {
     sql: ${TABLE}."DISCOUNT_PCT" ;;
   }
 
-  dimension: lcl_currency_dollars {
-    type: number
-    sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
-  }
+
 
   dimension: li_duration {
     type: number
@@ -229,6 +221,15 @@ view: slx_opportunity_lineitem_fact {
   dimension: tb_unique_stud_cnt {
     type: number
     sql: ${TABLE}."TB_UNIQUE_STUD_CNT" ;;
+  }
+  measure: contract_cost_dollars {
+    type: sum
+    sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
+  }
+
+  measure: lcl_currency_dollars {
+    type: sum
+    sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
   }
 
   measure: count {
