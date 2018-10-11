@@ -86,8 +86,8 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."FLIPKICKER_FLG" ;;
   }
 
-  dimension: lcl_currency_dollars {
-    type: number
+  measure: lcl_currency_dollars {
+    type: sum
     sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
   }
 
