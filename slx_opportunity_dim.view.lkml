@@ -41,10 +41,7 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
   }
 
-  measure: dollars {
-    type: sum
-    sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
-  }
+
 
   dimension_group: contract_end {
     type: time
@@ -96,10 +93,6 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
   }
 
-  measure: lcl__dollars {
-    type: sum
-    sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
-  }
 
   dimension: master_proposal_id {
     type: string
@@ -284,6 +277,16 @@ view: slx_opportunity_dim {
   dimension: up_account_key {
     type: number
     sql: ${TABLE}."UP_ACCOUNT_KEY" ;;
+  }
+
+  measure: dollars {
+    type: sum
+    sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
+  }
+
+  measure: lcl__dollars {
+    type: sum
+    sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
   }
 
   measure: count {
