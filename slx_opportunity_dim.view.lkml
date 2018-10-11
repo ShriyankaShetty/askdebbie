@@ -36,7 +36,12 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."BUSINESS_WON_DATE" ;;
   }
 
-  measure: contract_cost_dollars {
+  dimension: contract_cost_dollars {
+    type: number
+    sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
+  }
+
+  measure: dollars {
     type: sum
     sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
   }
@@ -86,7 +91,12 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."FLIPKICKER_FLG" ;;
   }
 
-  measure: lcl_currency_dollars {
+  dimension: lcl_currency_dollars {
+    type: number
+    sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
+  }
+
+  measure: lcl__dollars {
     type: sum
     sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
   }
