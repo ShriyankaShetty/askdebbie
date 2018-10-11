@@ -36,10 +36,6 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."BUSINESS_WON_DATE" ;;
   }
 
-  dimension: contract_cost_dollars {
-    type: number
-    sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
-  }
 
 
 
@@ -88,10 +84,6 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."FLIPKICKER_FLG" ;;
   }
 
-  dimension: lcl_currency_dollars {
-    type: number
-    sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
-  }
 
 
   dimension: master_proposal_id {
@@ -279,12 +271,12 @@ view: slx_opportunity_dim {
     sql: ${TABLE}."UP_ACCOUNT_KEY" ;;
   }
 
-  measure: dollars {
+  measure: contract_cost_dollars {
     type: sum
     sql: ${TABLE}."CONTRACT_COST_DOLLARS" ;;
   }
 
-  measure: lcl__dollars {
+  measure: lcl_currency_dollars {
     type: sum
     sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
   }
