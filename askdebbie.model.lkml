@@ -10,11 +10,21 @@ include: "*.view"                       # include all views in this project
    label: "Edu Sales"
   view_name: slx_opportunity_lineitem_fact
 
+  always_filter: {
+    filters: {
+      field: slx_opportunity_dim.slx_opportunity_status_key
+      value :"1,6"
+    }
+  }
+
+
   join: slx_opportunity_dim {
     view_label: "Opportunities"
     relationship: many_to_one
     sql_on: ${slx_opportunity_dim.opportunity_key} = ${slx_opportunity_lineitem_fact.opportunity_key} ;;
   }
+
+
 
    join: product_dim {
      relationship: many_to_one
