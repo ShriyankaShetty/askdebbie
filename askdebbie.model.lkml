@@ -57,4 +57,9 @@ include: "*.view"                       # include all views in this project
     relationship: many_to_one
     sql_on: ${slx_opportunity_dim.billing_entity_key} = ${slx_billing_entity_dim.account_key} ;;
   }
+
+  join: slx_bodypolitic_dim {
+    relationship: many_to_one
+    sql_on: ${slx_billing_entity_dim.bodypolitic_key} = ${slx_billing_entity_dim.bodypolitic_key} ;;
+  }
  }
