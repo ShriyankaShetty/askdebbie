@@ -3,6 +3,7 @@ view: slx_bodypolitic_dim {
 
   dimension: bodypolitic_code {
     type: string
+    map_layer_name: us_states
     sql: ${TABLE}."BODYPOLITIC_CODE" ;;
   }
 
