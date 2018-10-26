@@ -16,11 +16,16 @@ view: executive_summary_fact {
     sql: ${TABLE}."MONTH_KEY" ;;
   }
 
-  dimension: new {
-    type: number
+#   dimension: new {
+#     type: number
+#     sql: ${TABLE}."NEW" ;;
+#   }
+
+
+  measure: new {
+    type: sum
     sql: ${TABLE}."NEW" ;;
   }
-
   dimension: platform_code {
     type: number
     sql: ${TABLE}."PLATFORM_CODE" ;;
@@ -36,8 +41,13 @@ view: executive_summary_fact {
     sql: ${TABLE}."PRODUCT_LINE_KEY" ;;
   }
 
-  dimension: renewal {
-    type: number
+#   dimension: renewal {
+#     type: number
+#     sql: ${TABLE}."RENEWAL" ;;
+#   }
+
+  measure: renewal {
+    type: sum
     sql: ${TABLE}."RENEWAL" ;;
   }
 
@@ -56,11 +66,15 @@ view: executive_summary_fact {
     sql: ${TABLE}."TERRITORY_KEY" ;;
   }
 
-  dimension: total {
-    type: number
+#   dimension: total {
+#     type: number
+#     sql: ${TABLE}."TOTAL" ;;
+#   }
+
+  measure: total {
+    type: sum
     sql: ${TABLE}."TOTAL" ;;
   }
-
   measure: count {
     type: count
     drill_fields: []
