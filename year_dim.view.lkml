@@ -169,4 +169,25 @@ view: year_dim {
     type: count
     drill_fields: []
   }
+
+  dimension: year_select {
+
+    sql:
+   CASE
+      WHEN {% condition year_filter %} ${TABLE}."YEAR_KEY" {% endcondition %}
+      THEN ${TABLE}."YEAR_KEY"
+      ELSE null
+    END
+  ;;
+  }
+
+  filter: year_filter {
+    type: number
+
+  }
+#   filter: metric {
+#     type: number
+#     sql:year_dim.year_key = {% parameter year_selector % }
+#        ;;
+#   }
 }

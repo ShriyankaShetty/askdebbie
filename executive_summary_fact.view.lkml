@@ -75,6 +75,24 @@ view: executive_summary_fact {
     type: sum
     sql: ${TABLE}."TOTAL" ;;
   }
+
+  parameter: sale {
+    type: unquoted
+    allowed_value: { label: "Total" value: "total" }
+    allowed_value: { label: "New" value: "new" }
+    allowed_value: { label: "Renewal" value: "renewal" }
+  }
+
+  measure: sale_type{
+    sql:
+    {% if sale._parameter_value == 'total' %}
+      ${total}
+    {% elsif sale._parameter_value == 'new' %}
+      ${new}
+    {% else %}
+      ${renewal}
+    {% endif %};;
+  }
   measure: count {
     type: count
     drill_fields: []

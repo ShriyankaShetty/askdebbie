@@ -83,6 +83,10 @@ explore: executive_reporting {
     sql_on: ${month_dim.quarter_key} = ${quarter_dim.quarter_key} ;;
   }
 
+  join: year_dim {
+    relationship: many_to_one
+    sql_on: ${quarter_dim.year_key} = ${year_dim.year_key} ;;
+  }
   join: week_dim {
     relationship: many_to_one
     sql_on: ${quarter_dim.year_key} = ${week_dim.year_key} ;;
