@@ -84,6 +84,7 @@ view: executive_summary_fact {
   }
 
   measure: sale_type{
+    type: number
     sql:
     {% if sale._parameter_value == 'total' %}
       ${total}
