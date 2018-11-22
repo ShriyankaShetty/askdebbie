@@ -22,6 +22,7 @@ view: product_class_dim {
   }
 
   dimension: product_class_key {
+    primary_key: yes
     type: number
     sql: ${TABLE}."PRODUCT_CLASS_KEY" ;;
   }
@@ -39,5 +40,22 @@ view: product_class_dim {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  ##testing parameters
+  measure: prod_cls_count {
+    type: sum
+    sql:
+    CASE
+      WHEN ${product_class_desc} = {% parameter prd_cls_to_count %}
+      THEN 1
+      ELSE 0
+    END
+  ;;
+  }
+
+  filter: prd_cls_to_count {
+    type: string
+
   }
 }
