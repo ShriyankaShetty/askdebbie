@@ -6,6 +6,14 @@ include: "*.view"                       # include all views in this project
 # # Select the views that should be a part of this model,
 # # and define the joins that connect them together.
 #
+
+datagroup: askdebbie_etl {
+  ###Can be set to match your etl process
+  sql_trigger: Select max(last_load_date) from year_dim where Year_key=2018 ;;
+  #max_cache_age: "24 hours"
+}
+
+persist_with: askdebbie_etl
  explore: edu_sales {
    label: "Edu Sales"
   view_name: slx_opportunity_lineitem_fact
