@@ -16,6 +16,8 @@ datagroup: askdebbie_etl {
 persist_with: askdebbie_etl
 
  explore: edu_sales {
+
+
    label: "Edu Sales"
   view_name: slx_opportunity_lineitem_fact
 
@@ -82,6 +84,11 @@ persist_with: askdebbie_etl
 
 explore: executive_reporting {
   label: "Executive reporting"
+
+  access_filter: {
+    field: sls_territory_dim.territory_desc
+    user_attribute: territory
+  }
   view_name: executive_summary_fact
 
   join: component_dim {
