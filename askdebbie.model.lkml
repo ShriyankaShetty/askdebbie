@@ -25,7 +25,6 @@ include: "*.view"                       # include all views in this project
   }
 
 
-
    join: product_dim {
      relationship: many_to_one
        sql_on: ${product_dim.product_key} = ${slx_opportunity_lineitem_fact.product_key} ;;
@@ -46,6 +45,14 @@ include: "*.view"                       # include all views in this project
     relationship: many_to_one
     sql_on: ${product_line_dim.product_line_key} = ${product_curr_dim.product_line_key} ;;
   }
+
+  join: total_by_product_class {
+    view_label: "Opportunities"
+    relationship: one_to_one
+    sql_on: ${total_by_product_class.product} = ${product_class_dim.product_class_key} ;;
+  }
+
+
 
   join: slx_primary_account_dim {
     from: slx_account_dim
@@ -108,5 +115,13 @@ explore: executive_reporting {
     sql_on: ${sls_rgn_state_xref.bodypolitic_key} = ${executive_summary_fact.bodypolitic_key} and
     ${sls_rgn_state_xref.year_key}=${quarter_dim.year_key};;
   }
+  join: product_class_dim {
+    relationship: many_to_one
+    sql_on: ${product_class_dim.product_class_key} = ${executive_summary_fact.product_class_key} ;;
+  }
 
+  join: product_line_dim {
+    relationship: many_to_one
+    sql_on: ${product_line_dim.product_line_key} =${executive_summary_fact.product_line_key} ;;
+  }
   }
