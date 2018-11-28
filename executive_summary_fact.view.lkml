@@ -25,6 +25,8 @@ view: executive_summary_fact {
   measure: new {
     type: sum
     sql: ${TABLE}."NEW" ;;
+    html:   <p style="color:sandybrown; font-size: 100%">{{ value }}</p>;;
+
   }
   dimension: platform_code {
     type: number
@@ -49,6 +51,7 @@ view: executive_summary_fact {
   measure: renewal {
     type: sum
     sql: ${TABLE}."RENEWAL" ;;
+    html:   <p style="color: sandybrown; font-size: 100%">{{ value }}</p>;;
   }
 
   dimension: renewal_team_flag {
@@ -74,6 +77,7 @@ view: executive_summary_fact {
   measure: total {
     type: sum
     sql: ${TABLE}."TOTAL" ;;
+    html:   <p style="color: sandybrown; font-size: 100%">{{ value }}</p>;;
   }
 
   parameter: sale {
@@ -93,6 +97,8 @@ view: executive_summary_fact {
     {% else %}
       ${renewal}
     {% endif %};;
+
+    html:   <p style="color: sandybrown; font-size: 100%">{{ value }}</p>;;
   }
   measure: count {
     type: count

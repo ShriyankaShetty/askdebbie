@@ -4,6 +4,7 @@ view: component_dim {
   dimension: component_desc {
     type: string
     sql: ${TABLE}."COMPONENT_DESC" ;;
+    html:   <p style="color:darkslategray; font-size: 100%">{{ value }}</p>;;
   }
 
   dimension: component_grp_key {
@@ -19,6 +20,7 @@ view: component_dim {
   dimension: dashboard_comp_desc {
     type: string
     sql: ${TABLE}."DASHBOARD_COMP_DESC" ;;
+    html:   <p style="color:darkslategray; font-size: 100%">{{ value }}</p>;;
   }
 
   dimension: short_desc {

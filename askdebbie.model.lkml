@@ -10,7 +10,7 @@ include: "*.view"                       # include all views in this project
 datagroup: askdebbie_etl {
   ###Can be set to match your etl process
   sql_trigger: Select max(last_load_date) from year_dim where Year_key=2018 ;;
-  #max_cache_age: "24 hours"
+ # max_cache_age: "24 hours"
 }
 
 persist_with: askdebbie_etl
