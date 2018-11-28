@@ -9,13 +9,16 @@ include: "*.view"                       # include all views in this project
 
 datagroup: askdebbie_etl {
   ###Can be set to match your etl process
-  sql_trigger: Select max(last_load_date) from year_dim where Year_key=2018 ;;
- # max_cache_age: "24 hours"
+  sql_trigger: SELECT max(last_load_date) FROM disced.year_dim where year_key=2018 ;;
+  #max_cache_age: "24 hours"
 }
 
 persist_with: askdebbie_etl
- explore: edu_sales {
-   label: "Edu Sales"
+
+explore: edu_sales {
+
+
+  label: "Edu Sales"
   view_name: slx_opportunity_lineitem_fact
 
   always_filter: {
@@ -33,12 +36,11 @@ persist_with: askdebbie_etl
   }
 
 
+  join: product_dim {
+    relationship: many_to_one
+    sql_on: ${product_dim.product_key} = ${slx_opportunity_lineitem_fact.product_key} ;;
 
-   join: product_dim {
-     relationship: many_to_one
-       sql_on: ${product_dim.product_key} = ${slx_opportunity_lineitem_fact.product_key} ;;
-
-   }
+  }
 
   join: product_curr_dim {
     relationship: many_to_one
@@ -55,6 +57,14 @@ persist_with: askdebbie_etl
     sql_on: ${product_line_dim.product_line_key} = ${product_curr_dim.product_line_key} ;;
   }
 
+  join: total_by_product_class {
+    view_label: "Opportunities"
+    relationship: one_to_one
+    sql_on: ${total_by_product_class.product} = ${product_class_dim.product_class_key} ;;
+  }
+
+
+
   join: slx_primary_account_dim {
     from: slx_account_dim
     relationship: many_to_one
@@ -70,10 +80,15 @@ persist_with: askdebbie_etl
     relationship: many_to_one
     sql_on: ${slx_billing_entity_dim.bodypolitic_key} = ${slx_billing_entity_dim.bodypolitic_key} ;;
   }
- }
+}
 
 explore: executive_reporting {
   label: "Executive reporting"
+
+  access_filter: {
+    field: sls_territory_dim.territory_desc
+    user_attribute: territory
+  }
   view_name: executive_summary_fact
 
   join: component_dim {
@@ -114,7 +129,15 @@ explore: executive_reporting {
   join: sls_rgn_state_xref{
     relationship: many_to_one
     sql_on: ${sls_rgn_state_xref.bodypolitic_key} = ${executive_summary_fact.bodypolitic_key} and
-    ${sls_rgn_state_xref.year_key}=${quarter_dim.year_key};;
+      ${sls_rgn_state_xref.year_key}=${quarter_dim.year_key};;
+  }
+  join: product_class_dim {
+    relationship: many_to_one
+    sql_on: ${product_class_dim.product_class_key} = ${executive_summary_fact.product_class_key} ;;
   }
 
+  join: product_line_dim {
+    relationship: many_to_one
+    sql_on: ${product_line_dim.product_line_key} =${executive_summary_fact.product_line_key} ;;
   }
+}

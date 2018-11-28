@@ -232,8 +232,45 @@ view: slx_opportunity_lineitem_fact {
     sql: ${TABLE}."LCL_CURRENCY_DOLLARS" ;;
   }
 
+
+
   measure: count {
     type: count
     drill_fields: []
   }
 }
+
+
+view: total_by_product_class {
+  derived_table: {
+
+    sql: SELECT
+    pc.product_class_key  product,
+        sum(f.contract_cost_dollars) dollars_by_product
+      FROM slx_opportunity_lineitem_fact f
+      LEFT JOIN product_dim p
+       on f.product_key =p.product_key
+      left join product_curr_dim pcur
+      on pcur.product_curr_key = p.product_curr_key
+      left join product_class_dim pc
+      on pcur.product_class_key = pc.product_class_key
+      GROUP BY 1
+       ;;
+  }
+
+  dimension: product {
+    primary_key: yes
+    type: number
+    sql: ${TABLE}.product;;
+  }
+
+
+  measure: dollars_by_product {
+    type: sum
+    sql:   ${TABLE}.dollars_by_product;;
+
+  }
+
+
+
+  }
