@@ -148,6 +148,7 @@ view: year_dim {
   dimension: year_key {
     type: number
     sql: ${TABLE}."YEAR_KEY" ;;
+    suggestions: ["2016", "2017", "2018"]
   }
 
   dimension_group: year_start {
