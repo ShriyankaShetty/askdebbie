@@ -148,8 +148,19 @@ view: year_dim {
   dimension: year_key {
     type: number
     sql: ${TABLE}."YEAR_KEY" ;;
-    suggestions: ["2016", "2017", "2018"]
+
   }
+
+
+  parameter: booked_year {
+    type: number
+    allowed_value: { label: "2016" value: "2016" }
+    allowed_value: { label: "2017" value: "2017" }
+    allowed_value: { label: "2018" value: "2018" }
+  }
+
+
+
 
   dimension_group: year_start {
     type: time

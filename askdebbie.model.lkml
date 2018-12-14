@@ -140,4 +140,6 @@ explore: executive_reporting {
     relationship: many_to_one
     sql_on: ${product_line_dim.product_line_key} =${executive_summary_fact.product_line_key} ;;
   }
+
+  sql_always_where: {% condition year_dim.booked_year %} year_dim.year_key {% endcondition %} ;;
 }
