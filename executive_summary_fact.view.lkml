@@ -85,9 +85,9 @@ view: executive_summary_fact {
 
   parameter: sale {
     type: unquoted
-    allowed_value: { label: "Total" value: "total" }
-    allowed_value: { label: "New" value: "new" }
-    allowed_value: { label: "Renewal" value: "renewal" }
+    allowed_value: { label: "Total Sales" value: "total" }
+    allowed_value: { label: "New Sales" value: "new" }
+    allowed_value: { label: "Renewal Sales" value: "renewal" }
   }
 
   measure: sale_type{
@@ -102,6 +102,8 @@ view: executive_summary_fact {
     {% endif %};;
     value_format_name: usd_0
     html:   <p style="color: sandybrown; font-size: 100%">{{ rendered_value }}</p>;;
+    label_from_parameter: sale
+
   }
   measure: count {
     type: count
