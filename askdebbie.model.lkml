@@ -143,3 +143,65 @@ explore: executive_reporting {
 
   sql_always_where: {% condition year_dim.booked_year %} year_dim.year_key {% endcondition %} ;;
 }
+
+explore: executive_reporting_test {
+  label: "Executive reporting test"
+
+  access_filter: {
+    field: sls_territory_dim.territory_desc
+    user_attribute: sales_region
+  }
+  view_name: executive_summary_fact
+
+  join: component_dim {
+    relationship: many_to_one
+    sql_on: ${component_dim.component_key} = ${executive_summary_fact.component_key} ;;
+  }
+
+  join: month_dim {
+    relationship: many_to_one
+    sql_on: ${executive_summary_fact.month_key} = ${month_dim.month_key} ;;
+  }
+
+  join: quarter_dim {
+    relationship: many_to_one
+    sql_on: ${month_dim.quarter_key} = ${quarter_dim.quarter_key} ;;
+  }
+
+  join: year_dim {
+    relationship: many_to_one
+    sql_on: ${quarter_dim.year_key} = ${year_dim.year_key} ;;
+  }
+  join: week_dim {
+    relationship: many_to_one
+    sql_on: ${quarter_dim.year_key} = ${week_dim.year_key} ;;
+  }
+  join: sls_rep_prodclass_wk_fact{
+    relationship: many_to_one
+    sql_on: ${week_dim.week_key} = ${sls_rep_prodclass_wk_fact.week_key} ;;
+  }
+  join: slx_bodypolitic_dim{
+    relationship: many_to_one
+    sql_on: ${executive_summary_fact.bodypolitic_key} = ${slx_bodypolitic_dim.bodypolitic_key} ;;
+  }
+  join: sls_territory_dim{
+    relationship: many_to_one
+    sql_on: ${executive_summary_fact.territory_key} = ${sls_territory_dim.territory_key} ;;
+  }
+  join: sls_rgn_state_xref{
+    relationship: many_to_one
+    sql_on: ${sls_rgn_state_xref.bodypolitic_key} = ${executive_summary_fact.bodypolitic_key} and
+      ${sls_rgn_state_xref.year_key}=${quarter_dim.year_key};;
+  }
+  join: product_class_dim {
+    relationship: many_to_one
+    sql_on: ${product_class_dim.product_class_key} = ${executive_summary_fact.product_class_key} ;;
+  }
+
+  join: product_line_dim {
+    relationship: many_to_one
+    sql_on: ${product_line_dim.product_line_key} =${executive_summary_fact.product_line_key} ;;
+  }
+
+  sql_always_where: {% condition year_dim.booked_year %} year_dim.year_key {% endcondition %} ;;
+}
