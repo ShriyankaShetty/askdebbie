@@ -27,6 +27,7 @@ view: executive_summary_fact {
     sql: ${TABLE}."NEW" ;;
     value_format_name: usd_0
     html:   <p style="color:sandybrown; font-size: 100%">{{ rendered_value }}</p>;;
+    drill_fields: [component_dim.COMPONENT_DESC]
 
   }
   dimension: platform_code {

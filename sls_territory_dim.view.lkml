@@ -11,7 +11,7 @@ view: sls_territory_dim {
     sql: ${TABLE}."TERRITORY_DESC" ;;
    html:   <p style="color:darkslategray; font-size: 100%">{{ linked_value }}</p>;;
 
-    label: "By State"
+    #label: "By State"
     drill_fields: [slx_bodypolitic_dim.bodypolitic_code]
 
   }

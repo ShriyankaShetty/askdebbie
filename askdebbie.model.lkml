@@ -87,7 +87,7 @@ explore: executive_reporting {
 
   access_filter: {
     field: sls_territory_dim.territory_desc
-    user_attribute: territory
+    user_attribute: sales_region
   }
   view_name: executive_summary_fact
 
