@@ -9,7 +9,8 @@ view: sls_territory_dim {
   dimension: territory_desc {
     type: string
     sql: ${TABLE}."TERRITORY_DESC" ;;
-   html:   <p style="color:darkslategray; font-size: 100%">{{ linked_value }}</p>;;
+   html:   <p style="color: white; background-color: gray; font-size:100%; text-align:center"><b>{{ rendered_value }}</b></p>;;
+
 
     #label: "By State"
     drill_fields: [slx_bodypolitic_dim.bodypolitic_code]

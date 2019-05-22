@@ -26,7 +26,7 @@ view: executive_summary_fact {
     type: sum
     sql: ${TABLE}."NEW" ;;
     value_format_name: usd_0
-    html:   <p style="color:sandybrown; font-size: 100%">{{ rendered_value }}</p>;;
+    #html:   <p style="color:sandybrown; font-size: 100%">{{ rendered_value }}</p>;;
     drill_fields: [component_dim.COMPONENT_DESC]
 
   }
@@ -54,7 +54,7 @@ view: executive_summary_fact {
     type: sum
     sql: ${TABLE}."RENEWAL" ;;
     value_format_name: usd_0
-    html:   <p style="color: sandybrown; font-size: 100%">{{ rendered_value }}</p>;;
+    #html:   <p style="color: sandybrown; font-size: 100%">{{ rendered_value }}</p>;;
   }
 
   dimension: renewal_team_flag {
@@ -81,7 +81,7 @@ view: executive_summary_fact {
     type: sum
     sql: ${TABLE}."TOTAL" ;;
     value_format_name: usd_0
-    html:   <p style="color: sandybrown; font-size: 100%">{{ rendered_value }}</p>;;
+    #html:   <p style="color: sandybrown; font-size: 100%">{{ rendered_value }}</p>;;
   }
 
   parameter: sale {

@@ -4,7 +4,7 @@ view: component_dim {
   dimension: component_desc {
     type: string
     sql: ${TABLE}."COMPONENT_DESC" ;;
-    html:   <p style="color:darkslategray; font-size: 100%">{{ value }}</p>;;
+    html:   <p style="color: white;  background-color: gray; font-size:100%; text-align:center"><b>{{ rendered_value }}</b></p>;;
     link: {
       label: "Sales by Component"
       #url: "https://learn.looker.com/looks/249?&f[users.state]={{ _filters['users.state'] | url_encode }}&f[orders.date]={{ _filters['orders.date'] | url_encode }}"

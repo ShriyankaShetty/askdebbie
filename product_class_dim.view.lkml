@@ -14,6 +14,8 @@ view: product_class_dim {
   dimension: product_class_desc {
     type: string
     sql: ${TABLE}."PRODUCT_CLASS_DESC" ;;
+    html:   <p style="color: white; background-color: gray; font-size:100%; text-align:center"><b>{{ rendered_value }}</b></p>;;
+
   }
 
   dimension: product_class_grouping_key {

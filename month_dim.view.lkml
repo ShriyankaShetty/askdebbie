@@ -84,6 +84,8 @@ view: month_dim {
   dimension: month_desc {
     type: string
     sql: ${TABLE}."MONTH_DESC" ;;
+    html:   <p style="color: white; background-color: gray; font-size:100%; text-align:center">{{ rendered_value }}</p>;;
+
   }
 
   dimension: month_duration_num {
